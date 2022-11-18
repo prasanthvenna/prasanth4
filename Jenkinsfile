@@ -4,11 +4,11 @@ node{
    def tomcatBin = 'C:\\apache-tomcat-9.0.68\\bin'
    def tomcatStatus = ''
    stage('SCM Checkout'){
-     git 'https://github.com/Ravitejano1/TraineeProject.git'
+     git 'https://github.com/prasanthvenna/prasanth4.git'
    }
    stage('Compile-Package-create-war-file'){
       // Get maven home path
-      def mvnHome =  tool name: 'Maven', type: 'maven'   
+      def mvnHome =  tool name: 'ApacheMaven', type: 'maven'   
       bat "${mvnHome}/bin/mvn package"
       }
 /*   stage ('Stop Tomcat Server') {
@@ -24,7 +24,7 @@ node{
 '''
    }*/
    stage('Deploy to Tomcat'){
-     bat "copy target\\Traineeproject.war \"${tomcatWeb}\\Traineeproject.war\""
+     bat "copy target\\prasanth4.war \"${tomcatWeb}\\prasanth4.war\""
    }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
